@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Ticket>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<h1 class="text-center"><i class="fa-regular fa-calendar-check text-success"> </i> Ticket History</h1>
+
+<div class="whiteBackground">
+    <div class="row">
+        
+        <div class="col-12 text-right">
+            <partial name="_CreateButtonPartial" />
+        </div>
+    </div>
+    <br />
+    <table id="myTable" class="table table-consensed ">
+        <thead>
+            <tr class="table-secondary">
+                <th>
+                    @Html.DisplayNameFor(m => m.CustomerName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.Status.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.Category.Name)
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(m => m.Reply)*@
+                </th>
+
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(m => item.CustomerName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Status.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Category.Name)
+                    </td>
+                    <td>
+                        @*@Html.DisplayFor(m => item.Reply)*@
+                    </td>
+
+                    <td style="width:150px;">
+                        <partial name="_OperationsButtonsPartial" model="@item.Id">
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+
+
+    </table>
+</div>
+
+
+
+

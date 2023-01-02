@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Ticket>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<partial name="_IndexTicketsPartialView" model="@Model">
+
+
+    @section scripts{
+        <script>
+            $(document).ready(function () {
+                $('#myTable').DataTable();
+            });
+        </script>
+    }

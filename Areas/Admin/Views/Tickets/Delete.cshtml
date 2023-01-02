@@ -1,0 +1,79 @@
+﻿@model TicketViewModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<h2 class="text-info">Delete Tickets</h2>
+<br />
+<form asp-action="Delete" method="post" enctype="multipart/form-data">
+    @*nctype="multipart/form-data" باسخدمها لما بدي أرفع صور بأي فورم*@
+    <input type="hidden" asp-for="Ticket.Id" />
+
+    <div class="whiteBackground border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+        <div class="from-control row mt-3">
+            <div class="col-2">
+                <label asp-for="Ticket.CustomerName" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input readonly asp-for="Ticket.CustomerName" class="form-control" />
+                <span class="text-danger" asp-validation-for="Ticket.CustomerName"></span> @*To Required Field*@
+            </div>
+        </div>
+
+
+
+        <div class="from-group row mt-3">
+            <div class="col-2">
+                <label asp-for="Ticket.Description" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <div class="whiteBackground2">
+                        @Html.Raw(Model.Ticket.Description)
+                </div>
+                
+            </div>
+        </div>
+
+
+        <!--<div class="from-group row mt-3">
+            <div class="col-2">
+                <label asp-for="Ticket.Reply" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input readonly asp-for="Ticket.Reply" class="form-control" />
+                <span class="text-danger" asp-validation-for="Ticket.Reply"></span>--> @*To Required Field*@
+            <!--</div>
+        </div>-->
+
+
+        <div class="from-group row mt-3">
+            <div class="col-2">
+                <label asp-for="Ticket.StatusId" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <select asp-for="Ticket.StatusId" disabled asp-items="@(new SelectList(Model.StatusList,"Id","Name"))" class="form-control"></select>
+                <span class="text-danger" asp-validation-for="Ticket.StatusId"></span> @*To Required Field*@
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="from-group row" style="padding-top:20px;">
+            <div class="col-5 offset-2">
+                <partial name="_DeleteAndBackListButtonPartial" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section scripts{   @*عشان يصير الريكواير على مستوى الصفحة مش ع مستوى السيرفير يعني بمنع الريفريش*@
+<partial name="_ValidationScriptsPartial" />
+}
+

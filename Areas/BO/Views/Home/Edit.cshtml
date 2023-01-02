@@ -1,0 +1,12 @@
+﻿@model TicketViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<partial name="_EditTicketsPartailViewModel" model="@Model">
+
+
+    @section scripts{   @*عشان يصير الريكواير على مستوى الصفحة مش ع مستوى السيرفير يعني بمنع الريفريش*@
+    <partial name="_ValidationScriptsPartial" />
+
+    }

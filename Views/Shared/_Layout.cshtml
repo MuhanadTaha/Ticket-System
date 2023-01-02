@@ -1,0 +1,92 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Ticket System</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+
+
+</head>
+<body class="webBackground">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="Customer" asp-controller="Customers" asp-action="Index">
+                    <label class="text-white" style="cursor:pointer">Ticket</label>
+                </a>
+
+
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                @if (User.IsInRole(SD.ManagerUser))
+                {
+                    <a class="nav-link text-white-50" asp-action="Index" asp-controller="Tickets" asp-area="Admin">Home</a>
+                }
+                else if(User.IsInRole(SD.BackOfficeUser))
+                {
+                    <a class="nav-link text-white-50" asp-action="Index" asp-controller="Home" asp-area="BO">Home</a>
+
+                }
+                else if(User.IsInRole(SD.AgentUser)){
+                    <a class="nav-link text-white-50" asp-action="Index" asp-controller="Home" asp-area="Agent">Home</a>
+
+                }
+
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        @if (User.IsInRole(SD.ManagerUser)) // أولا وصلت لل أس دي موديل من خلال إني حطيت بالفيو امبورت النيم سبيس إلخا... استخدمتها عشان أظهر الناف منيو للآدمن بس
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Content Managment
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-action="Index" asp-controller="Categories" asp-area="Admin">Category</a>
+                                    <a class="dropdown-item" asp-action="Index" asp-controller="Status" asp-area="Admin">Status</a>
+                                    <a class="dropdown-item" asp-action="Index" asp-controller="Tickets" asp-area="Admin">Tickets</a>
+                                    <a class="dropdown-item" asp-action="index" asp-controller="Users" asp-area="Admin">Users</a>
+                                </div>
+                            </li>
+                        }
+
+
+                    </ul>
+                    <partial name="_LoginPartial" />
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-white-50 bg-dark">
+        <div class="container">
+            &copy; @DateTime.Now.Year - Ticket System - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.tiny.cloud/1/9o2m0xfsa39u5who5y6i7ki1mde8742mp1f9jo1dddq2viyq/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script> @*عشان يكون في ايديتور بالايريا بصفحة الكرييت للمينيو ايتيم*@
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

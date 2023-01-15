@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\muhanad.taha\\Source\\Workspaces\\TicketSystem\\Safa-Bank-Ticket-System-main\\TicketSystem.csproj": {}
+    "C:\\Users\\muhanad.taha\\source\\Workspaces\\TicketSystem\\Safa-Bank-Ticket-System-main\\TicketSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\muhanad.taha\\Source\\Workspaces\\TicketSystem\\Safa-Bank-Ticket-System-main\\TicketSystem.csproj": {
+    "C:\\Users\\muhanad.taha\\source\\Workspaces\\TicketSystem\\Safa-Bank-Ticket-System-main\\TicketSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\muhanad.taha\\Source\\Workspaces\\TicketSystem\\Safa-Bank-Ticket-System-main\\TicketSystem.csproj",
+        "projectUniqueName": "C:\\Users\\muhanad.taha\\source\\Workspaces\\TicketSystem\\Safa-Bank-Ticket-System-main\\TicketSystem.csproj",
         "projectName": "TicketSystem",
-        "projectPath": "C:\\Users\\muhanad.taha\\Source\\Workspaces\\TicketSystem\\Safa-Bank-Ticket-System-main\\TicketSystem.csproj",
+        "projectPath": "C:\\Users\\muhanad.taha\\source\\Workspaces\\TicketSystem\\Safa-Bank-Ticket-System-main\\TicketSystem.csproj",
         "packagesPath": "C:\\Users\\muhanad.taha\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\muhanad.taha\\Source\\Workspaces\\TicketSystem\\Safa-Bank-Ticket-System-main\\obj\\",
+        "outputPath": "C:\\Users\\muhanad.taha\\source\\Workspaces\\TicketSystem\\Safa-Bank-Ticket-System-main\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\muhanad.taha\\AppData\\Roaming\\NuGet\\NuGet.Config",

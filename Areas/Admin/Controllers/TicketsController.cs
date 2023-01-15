@@ -137,7 +137,7 @@ namespace TicketSystem.Areas.Admin.Controllers
 
                 doesexistTicket.Id = TicketVM.Ticket.Id;
                 doesexistTicket.CustomerId = TicketVM.Ticket.CustomerId;
-                doesexistTicket.CustomerName = TicketVM.Ticket.CustomerName;
+               // doesexistTicket.CustomerName = TicketVM.Ticket.CustomerName;
                 doesexistTicket.StatusId = TicketVM.Ticket.StatusId;
                 doesexistTicket.CategoryId = TicketVM.Ticket.CategoryId;
 

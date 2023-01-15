@@ -9,12 +9,15 @@
 <h1 class="text-center"><i class="fa-regular fa-calendar-check text-success"> </i> Ticket History</h1>
 
 <div class="whiteBackground">
-    <div class="row">
-        
-        <div class="col-12 text-right">
-            <partial name="_CreateButtonPartial" />
+    @if(!User.IsInRole(SD.BackOfficeUser))
+    {
+        <div class="row">
+            <div class="col-12 text-right">
+                <partial name="_CreateButtonPartial" />
+            </div>
         </div>
-    </div>
+    }
+   
     <br />
     <table id="myTable" class="table table-consensed ">
         <thead>

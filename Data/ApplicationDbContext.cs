@@ -14,6 +14,12 @@ namespace TicketSystem.Data
         {
         }
         public DbSet <Category> Categories { get; set; }
+
+
+
+
+
+
         public DbSet<Status> Statuses { get; set; }
         public DbSet<Reply> Replies { get; set; }
         public DbSet<Ticket> Tickets { get; set; }

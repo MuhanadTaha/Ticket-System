@@ -8035,24 +8035,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\user\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\muhanad.taha\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\repos\\TicketSystem\\TicketSystem.csproj",
+      "projectUniqueName": "C:\\Users\\muhanad.taha\\Source\\Workspaces\\TicketSystem\\Safa-Bank-Ticket-System-main\\TicketSystem.csproj",
       "projectName": "TicketSystem",
-      "projectPath": "C:\\Users\\repos\\TicketSystem\\TicketSystem.csproj",
-      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\repos\\TicketSystem\\obj\\",
+      "projectPath": "C:\\Users\\muhanad.taha\\Source\\Workspaces\\TicketSystem\\Safa-Bank-Ticket-System-main\\TicketSystem.csproj",
+      "packagesPath": "C:\\Users\\muhanad.taha\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\muhanad.taha\\Source\\Workspaces\\TicketSystem\\Safa-Bank-Ticket-System-main\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\muhanad.taha\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8132,7 +8127,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   },

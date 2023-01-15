@@ -35,7 +35,9 @@
                 <label asp-for="Ticket.Description" class="col-form-label"></label>
             </div>
             <div class="col-md-4">
-                <textarea readonly asp-for="Ticket.Description" class="form-control"></textarea>
+                <label class="label-forMe">
+                    @Html.Raw(Model.Ticket.Description)
+                </label>
                 <span class="text-danger" asp-validation-for="Ticket.Description"></span> @*To Required Field*@
             </div>
         </div>
@@ -108,7 +110,7 @@
                         </div>
 
 
-                       
+
 
                         <div class="row">
                             <div class="col-md-2">
@@ -118,19 +120,23 @@
                             </div>
                             @if (User.Identity.Name == item.UsernameReply)
                             {
-                                <div class="col-md-6 whiteBackground3">
+
+                                <div class="alert alert-primary" role="alert">
+
                                     @Html.DisplayFor(m => item.ReplyDetails)
                                 </div>
                             }
-                    else
-                    {
-                        <div class="col-md-6 whiteBackground2">
-                            @Html.DisplayFor(m => item.ReplyDetails)
+                            else
+                            {
+                                <div class="alert alert-secondary" role="alert">
+                                    @Html.DisplayFor(m => item.ReplyDetails)
+                                </div>
+
+                            }
                         </div>
-                    }
-                            </div>
-                       
-                   
+
+
+
 
 
                         <div class="row">
@@ -149,8 +155,9 @@
     </div>
 </form>
 
-@section scripts{   @*عشان يصير الريكواير على مستوى الصفحة مش ع مستوى السيرفير يعني بمنع الريفريش*@
-<partial name="_ValidationScriptsPartial" />
+@section scripts{
+    @*عشان يصير الريكواير على مستوى الصفحة مش ع مستوى السيرفير يعني بمنع الريفريش*@
+    <partial name="_ValidationScriptsPartial" />
 
 
 }

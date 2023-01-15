@@ -38,6 +38,61 @@ namespace TicketSystem.Controllers
             return View(Tickets);
         }
 
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View(TicketVM);
+        }
+
+        [HttpPost]
+        [ActionName("Create")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreatePost(TicketViewModel model) //ما بقد اسميها كريت لإني ما رح أمرر فيها داتا بالتالي سميتها كريت بوست
+        {
+            var claim = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.Name);
+            var username = claim.Value;
+
+
+            if (ModelState.IsValid)
+            {
+
+
+                db.Tickets.Add(model.Ticket);
+                await db.SaveChangesAsync();
+
+
+                Reply r = new Reply
+                {
+                    ReplyDate = Convert.ToString(DateTime.Now),
+                    UsernameReply = username,
+                    ReplyDetails = model.ReplyUser,
+                    TicketId = model.Ticket.Id,
+
+                };
+                db.Replies.Add(r);
+                await db.SaveChangesAsync();
+
+
+
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            TicketViewModel modelVM = new TicketViewModel()
+            {
+                CategoriesList = await db.Categories.ToListAsync(),
+                StatusList = await db.Statuses.ToListAsync(),
+            };
+
+            return View(modelVM);
+
+        }
+
+
+
+
+
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -104,6 +159,26 @@ namespace TicketSystem.Controllers
             };
 
             return View(modelVM);
+        }
+
+
+        public async Task<IActionResult> Details(int? id)
+
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var ticket = db.Tickets.Include(m => m.Category).Include(m => m.Status).SingleOrDefault(m => m.Id == id);
+            if (ticket == null)
+            {
+                return NotFound();
+            }
+
+
+            TicketVM.Ticket = ticket; // الداتا كلها رح تتخزن بالموديل منيو ايتيم
+            TicketVM.CategoriesList = await db.Categories.ToListAsync();
+            return View(TicketVM);
         }
     }
 }

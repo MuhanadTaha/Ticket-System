@@ -107,4 +107,13 @@ body {
     background-color:rgb(164 205 255);
 }
 
+.label-forMe {
+    border: solid #ced4da 1px;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #e9ecef;
+    width:100%;
+    min-height:40px;
+}
+
 

@@ -107,5 +107,25 @@ namespace TicketSystem.Areas.BO
 
             return View(modelVM);
         }
+
+
+        public async Task<IActionResult> Details(int? id)
+
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var ticket = db.Tickets.Include(m => m.Category).Include(m => m.Status).SingleOrDefault(m => m.Id == id);
+            if (ticket == null)
+            {
+                return NotFound();
+            }
+
+
+            TicketVM.Ticket = ticket; // الداتا كلها رح تتخزن بالموديل منيو ايتيم
+            TicketVM.CategoriesList = await db.Categories.ToListAsync();
+            return View(TicketVM);
+        }
     }
 }

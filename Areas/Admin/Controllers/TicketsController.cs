@@ -100,6 +100,7 @@ namespace TicketSystem.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
+
             if (id == null)
             {
                 return NotFound();
@@ -122,18 +123,27 @@ namespace TicketSystem.Areas.Admin.Controllers
         [HttpPost]
         [ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditPost() //ما بقد اسميها كريت لإني ما رح أمرر فيها داتا بالتالي سميتها كريت بوست
+        public async Task<IActionResult> EditPost(UpdateTicketViewModel updateTicketVM)
         {
             var claim = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.Name);
             var username = claim.Value;
 
 
+
+
             if (ModelState.IsValid)
             {
-                db.Tickets.Update(TicketVM.Ticket);
+                var doesexistTicket = await db.Tickets.FindAsync(TicketVM.Ticket.Id);
+
+                doesexistTicket.Id = TicketVM.Ticket.Id;
+                doesexistTicket.CustomerId = TicketVM.Ticket.CustomerId;
+                doesexistTicket.CustomerName = TicketVM.Ticket.CustomerName;
+                doesexistTicket.StatusId = TicketVM.Ticket.StatusId;
+                doesexistTicket.CategoryId = TicketVM.Ticket.CategoryId;
+
+                db.Tickets.Update(doesexistTicket);
                 await db.SaveChangesAsync();
-                
-                
+
                 Reply reply = new Reply
                 {
                     ReplyDate = Convert.ToString(DateTime.Now),
@@ -142,6 +152,7 @@ namespace TicketSystem.Areas.Admin.Controllers
                     TicketId = TicketVM.Ticket.Id,
 
                 };
+
                 if (!string.IsNullOrEmpty(reply.ReplyDetails))
                 {
                     db.Replies.Add(reply);
